@@ -575,6 +575,9 @@ public interface CurrencyPriceMapper {
     @Mapping(target = "id",
             ignore = true
     )
+    @Mapping(target = "baseCurrency",
+            ignore = true
+    )
     CurrencyPrice currencyPriceFromApiResponse(
             FetchCurrencyPriceResponse fetchCurrencyPriceResponse
     );
