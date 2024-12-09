@@ -4,12 +4,11 @@ import com.fatiharge.domain.CurrencyPrice;
 import com.fatiharge.service.CurrencyPriceService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 
 
 @Path("/currency-price")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public class CurrencyPriceResource {
 
     @Inject
@@ -17,7 +16,14 @@ public class CurrencyPriceResource {
 
     @GET
     @Path("/{baseCurrency}")
-    public CurrencyPrice findLatest(@PathParam("baseCurrency") String baseCurrency) {
+    @Operation(summary = "Find the latest currency price",
+            description = "Fetch the latest price for the given base currency."
+    )
+    public CurrencyPrice findLatest(
+            @PathParam("baseCurrency") String baseCurrency,
+            @HeaderParam("X-API-KEY") @Parameter(description = "API Key for authentication") String apiKey,
+            @HeaderParam("User-Agent") @Parameter(description = "The User-Agent header of the request") String userAgent
+    ) {
         return currencyPriceService.findLatest(baseCurrency);
     }
 }
