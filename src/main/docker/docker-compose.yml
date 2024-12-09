@@ -1,0 +1,42 @@
+services:
+  kur-hesapla-db:
+    container_name: kur-hesapla-db
+    image: postgres:16.3
+    volumes:
+      - /var/lib/kur-hesapla-db:/var/lib/postgresql/data
+    labels:
+      - "traefik.tcp.routers.kur-hesapla-db.rule=HostSNI(`kur-hesapla-db.fatiharge.com`)"
+      - "traefik.tcp.routers.kur-hesapla-db.entrypoints=tcp"
+      - "traefik.tcp.routers.kur-hesapla-db.tls.certresolver=myresolver"
+      - "traefik.tcp.services.kur-hesapla-db.loadbalancer.server.port=5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      - reverse-proxy
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+  kur-hesapla-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.native-micro
+    container_name: kur-hesapla-api
+    depends_on:
+      kur-hesapla-db:
+        condition: service_healthy
+    env_file:
+      - ../../../.env
+    labels:
+      - "traefik.http.routers.kur-hesapla-api.rule=Host(`kur-hesapla-api.fatiharge.com`)"
+      - "traefik.http.routers.kur-hesapla-api.entrypoints=websecure"
+      - "traefik.http.routers.kur-hesapla-api.tls.certresolver=myresolver"
+      - "traefik.http.services.kur-hesapla-api.loadbalancer.server.port=8080"
+    networks:
+      - reverse-proxy
+networks:
+  reverse-proxy:
+    external: true
