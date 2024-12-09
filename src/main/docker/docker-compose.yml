@@ -19,9 +19,7 @@ services:
       timeout: 5s
       retries: 5
   kur-hesapla-api:
-    build:
-      context: .
-      dockerfile: Dockerfile.jvm
+    image: quarkus/kur-hesapla-jvm
     container_name: kur-hesapla-api
     depends_on:
       kur-hesapla-db:
