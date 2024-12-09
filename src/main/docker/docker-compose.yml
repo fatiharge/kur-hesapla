@@ -9,10 +9,8 @@ services:
       - "traefik.tcp.routers.kur-hesapla-db.entrypoints=tcp"
       - "traefik.tcp.routers.kur-hesapla-db.tls.certresolver=myresolver"
       - "traefik.tcp.services.kur-hesapla-db.loadbalancer.server.port=5432"
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    env_file:
+      - ../../../.env
     networks:
       - reverse-proxy
     healthcheck:
@@ -23,7 +21,7 @@ services:
   kur-hesapla-api:
     build:
       context: .
-      dockerfile: Dockerfile.native-micro
+      dockerfile: Dockerfile.jvm
     container_name: kur-hesapla-api
     depends_on:
       kur-hesapla-db:
