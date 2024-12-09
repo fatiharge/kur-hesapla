@@ -6,9 +6,6 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 
@@ -25,9 +22,10 @@ public class HistoricalCurrencyPriceResource {
             @QueryParam("baseCurrency") String baseCurrency,
             @QueryParam("date") String date
             // (e.g. 2024-12-09)
-    ) throws ParseException {
-        Date parsedDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-        return historicalCurrencyPriceService.findByBaseCurrencyAndDate(baseCurrency, parsedDate);
+    ) {
+        throw new UnsupportedOperationException();
+        //        Date parsedDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        //        return historicalCurrencyPriceService.findByBaseCurrencyAndDate(baseCurrency, parsedDate);
     }
 
 }
