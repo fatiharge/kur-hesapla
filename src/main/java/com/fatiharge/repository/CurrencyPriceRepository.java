@@ -10,6 +10,6 @@ public class CurrencyPriceRepository implements PanacheRepository<CurrencyPrice>
 
 
     public CurrencyPrice findLatest(String baseCurrency) {
-        return find("baseCurrency = ?1 ORDER BY lastUpdated DESC", baseCurrency).firstResult();
+        return find("baseCurrency = ?1 ORDER BY createdDate DESC", baseCurrency).firstResult();
     }
 }

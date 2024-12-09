@@ -36,7 +36,7 @@ public class CurrencyPriceService {
     }
 
     private boolean isDataOutdated(CurrencyPrice latest) {
-        long timeDifference = System.currentTimeMillis() - latest.lastUpdated.getTime();
-        return timeDifference > 3600000;
+        long timeDifference = System.currentTimeMillis() - latest.createdDate.getTime();
+        return timeDifference > 1000 * 60 * 10;
     }
 }

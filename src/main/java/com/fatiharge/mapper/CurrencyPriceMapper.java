@@ -569,13 +569,13 @@ public interface CurrencyPriceMapper {
     @Mapping(target = "ZWL",
             source = "data.ZWL.value"
     )
-    @Mapping(target = "lastUpdated",
-            source = "meta.last_updated_at"
-    )
     @Mapping(target = "id",
             ignore = true
     )
     @Mapping(target = "baseCurrency",
+            ignore = true
+    )
+    @Mapping(target = "createdDate",
             ignore = true
     )
     CurrencyPrice currencyPriceFromApiResponse(
