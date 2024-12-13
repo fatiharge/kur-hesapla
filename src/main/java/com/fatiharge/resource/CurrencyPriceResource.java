@@ -1,6 +1,6 @@
 package com.fatiharge.resource;
 
-import com.fatiharge.domain.CurrencyPrice;
+import com.fatiharge.dto.findLatestResponse.FindLatestResponse;
 import com.fatiharge.service.CurrencyPriceService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -19,7 +19,7 @@ public class CurrencyPriceResource {
     @Operation(summary = "Find the latest currency price",
             description = "Fetch the latest price for the given base currency."
     )
-    public CurrencyPrice findLatest(
+    public FindLatestResponse findLatest(
             @PathParam("baseCurrency") String baseCurrency,
             @HeaderParam("X-API-KEY") @Parameter(description = "API Key for authentication") String apiKey,
             @HeaderParam("User-Agent") @Parameter(description = "The User-Agent header of the request") String userAgent

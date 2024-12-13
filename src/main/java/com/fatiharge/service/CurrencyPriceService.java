@@ -3,6 +3,7 @@ package com.fatiharge.service;
 import com.fatiharge.client.rest.CurrencyApiClient;
 import com.fatiharge.client.rest.dto.fetchCurrencyPrice.FetchCurrencyPriceResponse;
 import com.fatiharge.domain.CurrencyPrice;
+import com.fatiharge.dto.findLatestResponse.FindLatestResponse;
 import com.fatiharge.mapper.CurrencyPriceMapper;
 import com.fatiharge.repository.CurrencyPriceRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -24,7 +25,7 @@ public class CurrencyPriceService {
     CurrencyPriceMapper currencyPriceMapper;
 
     @Transactional
-    public CurrencyPrice findLatest(String baseCurrency) {
+    public FindLatestResponse findLatest(String baseCurrency) {
         CurrencyPrice latest = currencyPriceRepository.findLatest(baseCurrency);
         if (latest == null || isDataOutdated(latest)) {
             FetchCurrencyPriceResponse fetchCurrencyPriceResponse = currencyApiClient.fetchCurrencyPrice(baseCurrency);
@@ -32,7 +33,7 @@ public class CurrencyPriceService {
             latest.baseCurrency = baseCurrency;
             currencyPriceRepository.persist(latest);
         }
-        return latest;
+        return currencyPriceMapper.findLatestResponseFromCurrencyPrice(latest);
     }
 
     private boolean isDataOutdated(CurrencyPrice latest) {
