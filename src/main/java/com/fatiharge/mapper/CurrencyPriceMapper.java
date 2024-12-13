@@ -1144,9 +1144,6 @@ public interface CurrencyPriceMapper {
     @Mapping(target = "data.ZWL",
             source = "ZWL"
     )
-    @Mapping(target = "meta.createdDate",
-            source = "createdDate"
-    )
     @Mapping(target = "meta.baseCurrency",
             source = "baseCurrency"
     )
