@@ -1147,6 +1147,9 @@ public interface CurrencyPriceMapper {
     @Mapping(target = "meta.baseCurrency",
             source = "baseCurrency"
     )
+    @Mapping(target = "meta.createdDate",
+            source = "createdDate"
+    )
     FindLatestResponse findLatestResponseFromCurrencyPrice(CurrencyPrice currencyPrice);
 
 }

@@ -32,6 +32,7 @@ public class CurrencyPriceService {
             latest = currencyPriceMapper.currencyPriceFromApiResponse(fetchCurrencyPriceResponse);
             latest.baseCurrency = baseCurrency;
             currencyPriceRepository.persist(latest);
+            latest.createdDate = fetchCurrencyPriceResponse.meta.last_updated_at;
         }
         return currencyPriceMapper.findLatestResponseFromCurrencyPrice(latest);
     }
