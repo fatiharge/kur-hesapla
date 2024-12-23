@@ -2,7 +2,7 @@ package com.fatiharge.service;
 
 import com.fatiharge.client.rest.CurrencyApiClient;
 import com.fatiharge.client.rest.dto.fetchCurrencyPrice.FetchCurrencyPriceResponse;
-import com.fatiharge.domain.CurrencyPrice;
+import com.fatiharge.entity.CurrencyPrice;
 import com.fatiharge.dto.findLatestResponse.FindLatestResponse;
 import com.fatiharge.mapper.CurrencyPriceMapper;
 import com.fatiharge.repository.CurrencyPriceRepository;

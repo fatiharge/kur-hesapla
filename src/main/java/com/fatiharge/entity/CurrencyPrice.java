@@ -1,4 +1,4 @@
-package com.fatiharge.domain;
+package com.fatiharge.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;

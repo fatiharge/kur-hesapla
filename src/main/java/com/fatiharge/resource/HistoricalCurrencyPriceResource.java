@@ -1,6 +1,6 @@
 //package com.fatiharge.resource;
 //
-//import com.fatiharge.domain.HistoricalCurrencyPrice;
+//import com.fatiharge.entity.HistoricalCurrencyPrice;
 //import com.fatiharge.service.HistoricalCurrencyPriceService;
 //import jakarta.inject.Inject;
 //import jakarta.ws.rs.*;

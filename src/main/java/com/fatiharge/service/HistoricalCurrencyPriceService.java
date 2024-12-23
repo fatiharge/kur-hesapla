@@ -1,7 +1,7 @@
 package com.fatiharge.service;
 
 
-import com.fatiharge.domain.HistoricalCurrencyPrice;
+import com.fatiharge.entity.HistoricalCurrencyPrice;
 
 import com.fatiharge.repository.HistoricalCurrencyPriceRepository;
 import jakarta.enterprise.context.ApplicationScoped;

@@ -1,6 +1,6 @@
 package com.fatiharge.repository;
 
-import com.fatiharge.domain.HistoricalCurrencyPrice;
+import com.fatiharge.entity.HistoricalCurrencyPrice;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 

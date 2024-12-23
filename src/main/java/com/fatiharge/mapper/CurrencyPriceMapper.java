@@ -1,7 +1,7 @@
 package com.fatiharge.mapper;
 
 import com.fatiharge.client.rest.dto.fetchCurrencyPrice.FetchCurrencyPriceResponse;
-import com.fatiharge.domain.CurrencyPrice;
+import com.fatiharge.entity.CurrencyPrice;
 import com.fatiharge.dto.findLatestResponse.FindLatestResponse;
 import org.mapstruct.*;
 
