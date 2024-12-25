@@ -11,6 +11,8 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
+import java.util.Date;
+
 @ApplicationScoped
 public class CurrencyPriceService {
 
@@ -32,7 +34,7 @@ public class CurrencyPriceService {
             latest = currencyPriceMapper.currencyPriceFromApiResponse(fetchCurrencyPriceResponse);
             latest.baseCurrency = baseCurrency;
             currencyPriceRepository.persist(latest);
-            latest.createdDate = fetchCurrencyPriceResponse.meta.last_updated_at;
+            latest.createdDate = new Date();
         }
         return currencyPriceMapper.findLatestResponseFromCurrencyPrice(latest);
     }
