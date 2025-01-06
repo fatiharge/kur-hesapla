@@ -4,7 +4,7 @@ import com.fatiharge.entity.HistoricalCurrencyPrice;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -13,8 +13,9 @@ public class HistoricalCurrencyPriceRepository implements PanacheRepository<Hist
 
     public List<HistoricalCurrencyPrice> findByBaseCurrencyAndDate(
             String baseCurrency,
-            Date date
+            LocalDate startDate,
+            LocalDate endDate
     ) {
-        return find("baseCurrency = ?1  AND date = ?2", baseCurrency, date).list();
+        return find("baseCurrency = ?1  AND date >= ?2 AND date <= ?3", baseCurrency, startDate, endDate).list();
     }
 }

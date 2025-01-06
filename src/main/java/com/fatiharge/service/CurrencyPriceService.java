@@ -1,7 +1,7 @@
 package com.fatiharge.service;
 
-import com.fatiharge.client.rest.CurrencyApiClient;
-import com.fatiharge.client.rest.dto.fetchCurrencyPrice.FetchCurrencyPriceResponse;
+import com.fatiharge.client.rest.currencyApiClient.CurrencyApiClient;
+import com.fatiharge.client.rest.currencyApiClient.dto.fetchCurrencyPrice.ApiFetchCurrencyPriceResponse;
 import com.fatiharge.entity.CurrencyPrice;
 import com.fatiharge.dto.findLatestResponse.FindLatestResponse;
 import com.fatiharge.mapper.CurrencyPriceMapper;
@@ -30,8 +30,8 @@ public class CurrencyPriceService {
     public FindLatestResponse findLatest(String baseCurrency) {
         CurrencyPrice latest = currencyPriceRepository.findLatest(baseCurrency);
         if (latest == null || isDataOutdated(latest)) {
-            FetchCurrencyPriceResponse fetchCurrencyPriceResponse = currencyApiClient.fetchCurrencyPrice(baseCurrency);
-            latest = currencyPriceMapper.currencyPriceFromApiResponse(fetchCurrencyPriceResponse);
+            ApiFetchCurrencyPriceResponse apiFetchCurrencyPriceResponse = currencyApiClient.fetchCurrencyPrice(baseCurrency);
+            latest = currencyPriceMapper.currencyPriceFromApiResponse(apiFetchCurrencyPriceResponse);
             latest.baseCurrency = baseCurrency;
             currencyPriceRepository.persist(latest);
             latest.createdDate = new Date();
@@ -41,6 +41,6 @@ public class CurrencyPriceService {
 
     private boolean isDataOutdated(CurrencyPrice latest) {
         long timeDifference = System.currentTimeMillis() - latest.createdDate.getTime();
-        return timeDifference > 1000 * 60 * 10;
+        return timeDifference > 1000 * 60 * 10; // 10 min
     }
 }

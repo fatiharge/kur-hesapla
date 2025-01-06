@@ -1,25 +1,214 @@
 package com.fatiharge.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
 @Entity
 @Table(name = "historical_currency_price")
 public class HistoricalCurrencyPrice extends PanacheEntity {
+    @Column(name = "date", unique = true)
+    public LocalDate date;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_date",
+            updatable = false
+    )
+    @CreationTimestamp
+    public Date createdDate;
+
     @Column(name = "base_currency")
-    private String baseCurrency;
+    public String baseCurrency;
 
-    @Column(name = "target_currency")
-    private String targetCurrency;
-
-    @Column(name = "price")
-    private Double price;
-
-    @Column(name = "date")
-    private Date date;
+    public double ADA;
+    public double AED;
+    public double AFN;
+    @Column(name = "ALL_")
+    public double ALL;
+    public double AMD;
+    public double ANG;
+    public double AOA;
+    public double ARB;
+    public double ARS;
+    public double AUD;
+    public double AVAX;
+    public double AWG;
+    public double AZN;
+    public double BAM;
+    public double BBD;
+    public double BDT;
+    public double BGN;
+    public double BHD;
+    public double BIF;
+    public double BMD;
+    public double BNB;
+    public double BND;
+    public double BOB;
+    public double BRL;
+    public double BSD;
+    public double BTC;
+    public double BTN;
+    public double BWP;
+    public double BYN;
+    public double BYR;
+    public double BZD;
+    public double CAD;
+    public double CDF;
+    public double CHF;
+    public double CLP;
+    public double CNY;
+    public double COP;
+    public double CRC;
+    public double CUC;
+    public double CUP;
+    public double CVE;
+    public double CZK;
+    public double DAI;
+    public double DJF;
+    public double DKK;
+    public double DOP;
+    public double DOT;
+    public double DZD;
+    public double EGP;
+    public double ERN;
+    public double ETB;
+    public double ETH;
+    public double EUR;
+    public double FJD;
+    public double FKP;
+    public double GBP;
+    public double GEL;
+    public double GGP;
+    public double GHS;
+    public double GIP;
+    public double GMD;
+    public double GNF;
+    public double GTQ;
+    public double GYD;
+    public double HKD;
+    public double HNL;
+    public double HRK;
+    public double HTG;
+    public double HUF;
+    public double IDR;
+    public double ILS;
+    public double IMP;
+    public double INR;
+    public double IQD;
+    public double IRR;
+    public double ISK;
+    public double JEP;
+    public double JMD;
+    public double JOD;
+    public double JPY;
+    public double KES;
+    public double KGS;
+    public double KHR;
+    public double KMF;
+    public double KPW;
+    public double KRW;
+    public double KWD;
+    public double KYD;
+    public double KZT;
+    public double LAK;
+    public double LBP;
+    public double LKR;
+    public double LRD;
+    public double LSL;
+    public double LTC;
+    public double LTL;
+    public double LVL;
+    public double LYD;
+    public double MAD;
+    public double MATIC;
+    public double MDL;
+    public double MGA;
+    public double MKD;
+    public double MMK;
+    public double MNT;
+    public double MOP;
+    public double MRO;
+    public double MRU;
+    public double MUR;
+    public double MVR;
+    public double MWK;
+    public double MXN;
+    public double MYR;
+    public double MZN;
+    public double NAD;
+    public double NGN;
+    public double NIO;
+    public double NOK;
+    public double NPR;
+    public double NZD;
+    public double OMR;
+    public double OP;
+    public double PAB;
+    public double PEN;
+    public double PGK;
+    public double PHP;
+    public double PKR;
+    public double PLN;
+    public double PYG;
+    public double QAR;
+    public double RON;
+    public double RSD;
+    public double RUB;
+    public double RWF;
+    public double SAR;
+    public double SBD;
+    public double SCR;
+    public double SDG;
+    public double SEK;
+    public double SGD;
+    public double SHP;
+    public double SLL;
+    public double SOL;
+    public double SOS;
+    public double SRD;
+    public double STD;
+    public double STN;
+    public double SVC;
+    public double SYP;
+    public double SZL;
+    public double THB;
+    public double TJS;
+    public double TMT;
+    public double TND;
+    public double TOP;
+    public double TRY;
+    public double TTD;
+    public double TWD;
+    public double TZS;
+    public double UAH;
+    public double UGX;
+    public double USD;
+    public double USDC;
+    public double USDT;
+    public double UYU;
+    public double UZS;
+    public double VEF;
+    public double VES;
+    public double VND;
+    public double VUV;
+    public double WST;
+    public double XAF;
+    public double XAG;
+    public double XAU;
+    public double XCD;
+    public double XDR;
+    public double XOF;
+    public double XPD;
+    public double XPF;
+    public double XPT;
+    public double XRP;
+    public double YER;
+    public double ZAR;
+    public double ZMK;
+    public double ZMW;
+    public double ZWL;
 }

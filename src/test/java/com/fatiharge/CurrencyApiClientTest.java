@@ -1,7 +1,7 @@
 package com.fatiharge;
 
-import com.fatiharge.client.rest.CurrencyApiClient;
-import com.fatiharge.client.rest.dto.fetchCurrencyPrice.FetchCurrencyPriceResponse;
+import com.fatiharge.client.rest.currencyApiClient.CurrencyApiClient;
+import com.fatiharge.client.rest.currencyApiClient.dto.fetchCurrencyPrice.ApiFetchCurrencyPriceResponse;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -22,11 +22,11 @@ public class CurrencyApiClientTest {
 
         String baseCurrency = "USD";
 
-        FetchCurrencyPriceResponse response = currencyApiClient.fetchCurrencyPrice(baseCurrency);
+        ApiFetchCurrencyPriceResponse response = currencyApiClient.fetchCurrencyPrice(baseCurrency);
 
         assertNotNull(response);
-        System.out.println(response.data.toString());
-        System.out.println(response.meta.last_updated_at);
+        System.out.println(response.apiFetchCurrencyPriceData.toString());
+        System.out.println(response.apiFetchCurrencyPriceMeta.last_updated_at);
 
     }
 }

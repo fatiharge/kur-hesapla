@@ -1,6 +1,6 @@
 package com.fatiharge.mapper;
 
-import com.fatiharge.client.rest.dto.fetchCurrencyPrice.FetchCurrencyPriceResponse;
+import com.fatiharge.client.rest.currencyApiClient.dto.fetchCurrencyPrice.ApiFetchCurrencyPriceResponse;
 import com.fatiharge.entity.CurrencyPrice;
 import com.fatiharge.dto.findLatestResponse.FindLatestResponse;
 import org.mapstruct.*;
@@ -8,1148 +8,395 @@ import org.mapstruct.*;
 @Mapper(componentModel = "cdi")
 public interface CurrencyPriceMapper {
 
+    @Named("parseStringToFloat")
+    default Float parseStringToFloat(String value) {
+        if (value != null && !value.isEmpty()) {
+            return Float.parseFloat(value);
+        }
+        return 0f;
+    }
 
-    @Mapping(target = "ADA",
-            source = "data.ADA.value"
-    )
-    @Mapping(target = "AED",
-            source = "data.AED.value"
-    )
-    @Mapping(target = "AFN",
-            source = "data.AFN.value"
-    )
-    @Mapping(target = "ALL",
-            source = "data.ALL.value"
-    )
-    @Mapping(target = "AMD",
-            source = "data.AMD.value"
-    )
-    @Mapping(target = "ANG",
-            source = "data.ANG.value"
-    )
-    @Mapping(target = "AOA",
-            source = "data.AOA.value"
-    )
-    @Mapping(target = "ARB",
-            source = "data.ARB.value"
-    )
-    @Mapping(target = "ARS",
-            source = "data.ARS.value"
-    )
-    @Mapping(target = "AUD",
-            source = "data.AUD.value"
-    )
-    @Mapping(target = "AVAX",
-            source = "data.AVAX.value"
-    )
-    @Mapping(target = "AWG",
-            source = "data.AWG.value"
-    )
-    @Mapping(target = "AZN",
-            source = "data.AZN.value"
-    )
-    @Mapping(target = "BAM",
-            source = "data.BAM.value"
-    )
-    @Mapping(target = "BBD",
-            source = "data.BBD.value"
-    )
-    @Mapping(target = "BDT",
-            source = "data.BDT.value"
-    )
-    @Mapping(target = "BGN",
-            source = "data.BGN.value"
-    )
-    @Mapping(target = "BHD",
-            source = "data.BHD.value"
-    )
-    @Mapping(target = "BIF",
-            source = "data.BIF.value"
-    )
-    @Mapping(target = "BMD",
-            source = "data.BMD.value"
-    )
-    @Mapping(target = "BNB",
-            source = "data.BNB.value"
-    )
-    @Mapping(target = "BND",
-            source = "data.BND.value"
-    )
-    @Mapping(target = "BOB",
-            source = "data.BOB.value"
-    )
-    @Mapping(target = "BRL",
-            source = "data.BRL.value"
-    )
-    @Mapping(target = "BSD",
-            source = "data.BSD.value"
-    )
-    @Mapping(target = "BTC",
-            source = "data.BTC.value"
-    )
-    @Mapping(target = "BTN",
-            source = "data.BTN.value"
-    )
-    @Mapping(target = "BWP",
-            source = "data.BWP.value"
-    )
-    @Mapping(target = "BYN",
-            source = "data.BYN.value"
-    )
-    @Mapping(target = "BYR",
-            source = "data.BYR.value"
-    )
-    @Mapping(target = "BZD",
-            source = "data.BZD.value"
-    )
-    @Mapping(target = "CAD",
-            source = "data.CAD.value"
-    )
-    @Mapping(target = "CDF",
-            source = "data.CDF.value"
-    )
-    @Mapping(target = "CHF",
-            source = "data.CHF.value"
-    )
-    @Mapping(target = "CLF",
-            source = "data.CLF.value"
-    )
-    @Mapping(target = "CLP",
-            source = "data.CLP.value"
-    )
-    @Mapping(target = "CNY",
-            source = "data.CNY.value"
-    )
-    @Mapping(target = "COP",
-            source = "data.COP.value"
-    )
-    @Mapping(target = "CRC",
-            source = "data.CRC.value"
-    )
-    @Mapping(target = "CUC",
-            source = "data.CUC.value"
-    )
-    @Mapping(target = "CUP",
-            source = "data.CUP.value"
-    )
-    @Mapping(target = "CVE",
-            source = "data.CVE.value"
-    )
-    @Mapping(target = "CZK",
-            source = "data.CZK.value"
-    )
-    @Mapping(target = "DAI",
-            source = "data.DAI.value"
-    )
-    @Mapping(target = "DJF",
-            source = "data.DJF.value"
-    )
-    @Mapping(target = "DKK",
-            source = "data.DKK.value"
-    )
-    @Mapping(target = "DOP",
-            source = "data.DOP.value"
-    )
-    @Mapping(target = "DOT",
-            source = "data.DOT.value"
-    )
-    @Mapping(target = "DZD",
-            source = "data.DZD.value"
-    )
-    @Mapping(target = "EGP",
-            source = "data.EGP.value"
-    )
-    @Mapping(target = "ERN",
-            source = "data.ERN.value"
-    )
-    @Mapping(target = "ETB",
-            source = "data.ETB.value"
-    )
-    @Mapping(target = "ETH",
-            source = "data.ETH.value"
-    )
-    @Mapping(target = "EUR",
-            source = "data.EUR.value"
-    )
-    @Mapping(target = "FJD",
-            source = "data.FJD.value"
-    )
-    @Mapping(target = "FKP",
-            source = "data.FKP.value"
-    )
-    @Mapping(target = "GBP",
-            source = "data.GBP.value"
-    )
-    @Mapping(target = "GEL",
-            source = "data.GEL.value"
-    )
-    @Mapping(target = "GGP",
-            source = "data.GGP.value"
-    )
-    @Mapping(target = "GHS",
-            source = "data.GHS.value"
-    )
-    @Mapping(target = "GIP",
-            source = "data.GIP.value"
-    )
-    @Mapping(target = "GMD",
-            source = "data.GMD.value"
-    )
-    @Mapping(target = "GNF",
-            source = "data.GNF.value"
-    )
-    @Mapping(target = "GTQ",
-            source = "data.GTQ.value"
-    )
-    @Mapping(target = "GYD",
-            source = "data.GYD.value"
-    )
-    @Mapping(target = "HKD",
-            source = "data.HKD.value"
-    )
-    @Mapping(target = "HNL",
-            source = "data.HNL.value"
-    )
-    @Mapping(target = "HRK",
-            source = "data.HRK.value"
-    )
-    @Mapping(target = "HTG",
-            source = "data.HTG.value"
-    )
-    @Mapping(target = "HUF",
-            source = "data.HUF.value"
-    )
-    @Mapping(target = "IDR",
-            source = "data.IDR.value"
-    )
-    @Mapping(target = "ILS",
-            source = "data.ILS.value"
-    )
-    @Mapping(target = "IMP",
-            source = "data.IMP.value"
-    )
-    @Mapping(target = "INR",
-            source = "data.INR.value"
-    )
-    @Mapping(target = "IQD",
-            source = "data.IQD.value"
-    )
-    @Mapping(target = "IRR",
-            source = "data.IRR.value"
-    )
-    @Mapping(target = "ISK",
-            source = "data.ISK.value"
-    )
-    @Mapping(target = "JEP",
-            source = "data.JEP.value"
-    )
-    @Mapping(target = "JMD",
-            source = "data.JMD.value"
-    )
-    @Mapping(target = "JOD",
-            source = "data.JOD.value"
-    )
-    @Mapping(target = "JPY",
-            source = "data.JPY.value"
-    )
-    @Mapping(target = "KES",
-            source = "data.KES.value"
-    )
-    @Mapping(target = "KGS",
-            source = "data.KGS.value"
-    )
-    @Mapping(target = "KHR",
-            source = "data.KHR.value"
-    )
-    @Mapping(target = "KMF",
-            source = "data.KMF.value"
-    )
-    @Mapping(target = "KPW",
-            source = "data.KPW.value"
-    )
-    @Mapping(target = "KRW",
-            source = "data.KRW.value"
-    )
-    @Mapping(target = "KWD",
-            source = "data.KWD.value"
-    )
-    @Mapping(target = "KYD",
-            source = "data.KYD.value"
-    )
-    @Mapping(target = "KZT",
-            source = "data.KZT.value"
-    )
-    @Mapping(target = "LAK",
-            source = "data.LAK.value"
-    )
-    @Mapping(target = "LBP",
-            source = "data.LBP.value"
-    )
-    @Mapping(target = "LKR",
-            source = "data.LKR.value"
-    )
-    @Mapping(target = "LRD",
-            source = "data.LRD.value"
-    )
-    @Mapping(target = "LSL",
-            source = "data.LSL.value"
-    )
-    @Mapping(target = "LTC",
-            source = "data.LTC.value"
-    )
-    @Mapping(target = "LTL",
-            source = "data.LTL.value"
-    )
-    @Mapping(target = "LVL",
-            source = "data.LVL.value"
-    )
-    @Mapping(target = "LYD",
-            source = "data.LYD.value"
-    )
-    @Mapping(target = "MAD",
-            source = "data.MAD.value"
-    )
-    @Mapping(target = "MATIC",
-            source = "data.MATIC.value"
-    )
-    @Mapping(target = "MDL",
-            source = "data.MDL.value"
-    )
-    @Mapping(target = "MGA",
-            source = "data.MGA.value"
-    )
-    @Mapping(target = "MKD",
-            source = "data.MKD.value"
-    )
-    @Mapping(target = "MMK",
-            source = "data.MMK.value"
-    )
-    @Mapping(target = "MNT",
-            source = "data.MNT.value"
-    )
-    @Mapping(target = "MOP",
-            source = "data.MOP.value"
-    )
-    @Mapping(target = "MRO",
-            source = "data.MRO.value"
-    )
-    @Mapping(target = "MRU",
-            source = "data.MRU.value"
-    )
-    @Mapping(target = "MUR",
-            source = "data.MUR.value"
-    )
-    @Mapping(target = "MVR",
-            source = "data.MVR.value"
-    )
-    @Mapping(target = "MWK",
-            source = "data.MWK.value"
-    )
-    @Mapping(target = "MXN",
-            source = "data.MXN.value"
-    )
-    @Mapping(target = "MYR",
-            source = "data.MYR.value"
-    )
-    @Mapping(target = "MZN",
-            source = "data.MZN.value"
-    )
-    @Mapping(target = "NAD",
-            source = "data.NAD.value"
-    )
-    @Mapping(target = "NGN",
-            source = "data.NGN.value"
-    )
-    @Mapping(target = "NIO",
-            source = "data.NIO.value"
-    )
-    @Mapping(target = "NOK",
-            source = "data.NOK.value"
-    )
-    @Mapping(target = "NPR",
-            source = "data.NPR.value"
-    )
-    @Mapping(target = "NZD",
-            source = "data.NZD.value"
-    )
-    @Mapping(target = "OMR",
-            source = "data.OMR.value"
-    )
-    @Mapping(target = "OP",
-            source = "data.OP.value"
-    )
-    @Mapping(target = "PAB",
-            source = "data.PAB.value"
-    )
-    @Mapping(target = "PEN",
-            source = "data.PEN.value"
-    )
-    @Mapping(target = "PGK",
-            source = "data.PGK.value"
-    )
-    @Mapping(target = "PHP",
-            source = "data.PHP.value"
-    )
-    @Mapping(target = "PKR",
-            source = "data.PKR.value"
-    )
-    @Mapping(target = "PLN",
-            source = "data.PLN.value"
-    )
-    @Mapping(target = "PYG",
-            source = "data.PYG.value"
-    )
-    @Mapping(target = "QAR",
-            source = "data.QAR.value"
-    )
-    @Mapping(target = "RON",
-            source = "data.RON.value"
-    )
-    @Mapping(target = "RSD",
-            source = "data.RSD.value"
-    )
-    @Mapping(target = "RUB",
-            source = "data.RUB.value"
-    )
-    @Mapping(target = "RWF",
-            source = "data.RWF.value"
-    )
-    @Mapping(target = "SAR",
-            source = "data.SAR.value"
-    )
-    @Mapping(target = "SBD",
-            source = "data.SBD.value"
-    )
-    @Mapping(target = "SCR",
-            source = "data.SCR.value"
-    )
-    @Mapping(target = "SDG",
-            source = "data.SDG.value"
-    )
-    @Mapping(target = "SEK",
-            source = "data.SEK.value"
-    )
-    @Mapping(target = "SGD",
-            source = "data.SGD.value"
-    )
-    @Mapping(target = "SHP",
-            source = "data.SHP.value"
-    )
-    @Mapping(target = "SLL",
-            source = "data.SLL.value"
-    )
-    @Mapping(target = "SOL",
-            source = "data.SOL.value"
-    )
-    @Mapping(target = "SOS",
-            source = "data.SOS.value"
-    )
-    @Mapping(target = "SRD",
-            source = "data.SRD.value"
-    )
-    @Mapping(target = "STD",
-            source = "data.STD.value"
-    )
-    @Mapping(target = "STN",
-            source = "data.STN.value"
-    )
-    @Mapping(target = "SVC",
-            source = "data.SVC.value"
-    )
-    @Mapping(target = "SYP",
-            source = "data.SYP.value"
-    )
-    @Mapping(target = "SZL",
-            source = "data.SZL.value"
-    )
-    @Mapping(target = "THB",
-            source = "data.THB.value"
-    )
-    @Mapping(target = "TJS",
-            source = "data.TJS.value"
-    )
-    @Mapping(target = "TMT",
-            source = "data.TMT.value"
-    )
-    @Mapping(target = "TND",
-            source = "data.TND.value"
-    )
-    @Mapping(target = "TOP",
-            source = "data.TOP.value"
-    )
-    @Mapping(target = "TRY",
-            source = "data.TRY.value"
-    )
-    @Mapping(target = "TTD",
-            source = "data.TTD.value"
-    )
-    @Mapping(target = "TWD",
-            source = "data.TWD.value"
-    )
-    @Mapping(target = "TZS",
-            source = "data.TZS.value"
-    )
-    @Mapping(target = "UAH",
-            source = "data.UAH.value"
-    )
-    @Mapping(target = "UGX",
-            source = "data.UGX.value"
-    )
-    @Mapping(target = "USD",
-            source = "data.USD.value"
-    )
-    @Mapping(target = "USDC",
-            source = "data.USDC.value"
-    )
-    @Mapping(target = "USDT",
-            source = "data.USDT.value"
-    )
-    @Mapping(target = "UYU",
-            source = "data.UYU.value"
-    )
-    @Mapping(target = "UZS",
-            source = "data.UZS.value"
-    )
-    @Mapping(target = "VEF",
-            source = "data.VEF.value"
-    )
-    @Mapping(target = "VES",
-            source = "data.VES.value"
-    )
-    @Mapping(target = "VND",
-            source = "data.VND.value"
-    )
-    @Mapping(target = "VUV",
-            source = "data.VUV.value"
-    )
-    @Mapping(target = "WST",
-            source = "data.WST.value"
-    )
-    @Mapping(target = "XAF",
-            source = "data.XAF.value"
-    )
-    @Mapping(target = "XAG",
-            source = "data.XAG.value"
-    )
-    @Mapping(target = "XAU",
-            source = "data.XAU.value"
-    )
-    @Mapping(target = "XCD",
-            source = "data.XCD.value"
-    )
-    @Mapping(target = "XDR",
-            source = "data.XDR.value"
-    )
-    @Mapping(target = "XOF",
-            source = "data.XOF.value"
-    )
-    @Mapping(target = "XPD",
-            source = "data.XPD.value"
-    )
-    @Mapping(target = "XPF",
-            source = "data.XPF.value"
-    )
-    @Mapping(target = "XPT",
-            source = "data.XPT.value"
-    )
-    @Mapping(target = "XRP",
-            source = "data.XRP.value"
-    )
-    @Mapping(target = "YER",
-            source = "data.YER.value"
-    )
-    @Mapping(target = "ZAR",
-            source = "data.ZAR.value"
-    )
-    @Mapping(target = "ZMK",
-            source = "data.ZMK.value"
-    )
-    @Mapping(target = "ZMW",
-            source = "data.ZMW.value"
-    )
-    @Mapping(target = "ZWL",
-            source = "data.ZWL.value"
-    )
-    @Mapping(target = "id",
-            ignore = true
-    )
-    @Mapping(target = "baseCurrency",
-            ignore = true
-    )
-    @Mapping(target = "createdDate",
-            ignore = true
-    )
+    @Mapping(target = "ADA", source = "apiFetchCurrencyPriceData.ADA.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "AED", source = "apiFetchCurrencyPriceData.AED.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "AFN", source = "apiFetchCurrencyPriceData.AFN.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "ALL", source = "apiFetchCurrencyPriceData.ALL.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "AMD", source = "apiFetchCurrencyPriceData.AMD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "ANG", source = "apiFetchCurrencyPriceData.ANG.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "AOA", source = "apiFetchCurrencyPriceData.AOA.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "ARB", source = "apiFetchCurrencyPriceData.ARB.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "ARS", source = "apiFetchCurrencyPriceData.ARS.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "AUD", source = "apiFetchCurrencyPriceData.AUD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "AVAX", source = "apiFetchCurrencyPriceData.AVAX.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "AWG", source = "apiFetchCurrencyPriceData.AWG.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "AZN", source = "apiFetchCurrencyPriceData.AZN.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BAM", source = "apiFetchCurrencyPriceData.BAM.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BBD", source = "apiFetchCurrencyPriceData.BBD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BDT", source = "apiFetchCurrencyPriceData.BDT.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BGN", source = "apiFetchCurrencyPriceData.BGN.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BHD", source = "apiFetchCurrencyPriceData.BHD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BIF", source = "apiFetchCurrencyPriceData.BIF.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BMD", source = "apiFetchCurrencyPriceData.BMD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BNB", source = "apiFetchCurrencyPriceData.BNB.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BND", source = "apiFetchCurrencyPriceData.BND.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BOB", source = "apiFetchCurrencyPriceData.BOB.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BRL", source = "apiFetchCurrencyPriceData.BRL.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BSD", source = "apiFetchCurrencyPriceData.BSD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BTC", source = "apiFetchCurrencyPriceData.BTC.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BTN", source = "apiFetchCurrencyPriceData.BTN.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BWP", source = "apiFetchCurrencyPriceData.BWP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BYN", source = "apiFetchCurrencyPriceData.BYN.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BYR", source = "apiFetchCurrencyPriceData.BYR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "BZD", source = "apiFetchCurrencyPriceData.BZD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "CAD", source = "apiFetchCurrencyPriceData.CAD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "CDF", source = "apiFetchCurrencyPriceData.CDF.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "CHF", source = "apiFetchCurrencyPriceData.CHF.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "CLP", source = "apiFetchCurrencyPriceData.CLP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "CNY", source = "apiFetchCurrencyPriceData.CNY.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "COP", source = "apiFetchCurrencyPriceData.COP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "CRC", source = "apiFetchCurrencyPriceData.CRC.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "CUC", source = "apiFetchCurrencyPriceData.CUC.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "CUP", source = "apiFetchCurrencyPriceData.CUP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "CVE", source = "apiFetchCurrencyPriceData.CVE.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "CZK", source = "apiFetchCurrencyPriceData.CZK.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "DAI", source = "apiFetchCurrencyPriceData.DAI.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "DJF", source = "apiFetchCurrencyPriceData.DJF.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "DKK", source = "apiFetchCurrencyPriceData.DKK.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "DOP", source = "apiFetchCurrencyPriceData.DOP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "DOT", source = "apiFetchCurrencyPriceData.DOT.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "DZD", source = "apiFetchCurrencyPriceData.DZD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "EGP", source = "apiFetchCurrencyPriceData.EGP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "ERN", source = "apiFetchCurrencyPriceData.ERN.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "ETB", source = "apiFetchCurrencyPriceData.ETB.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "ETH", source = "apiFetchCurrencyPriceData.ETH.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "EUR", source = "apiFetchCurrencyPriceData.EUR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "FJD", source = "apiFetchCurrencyPriceData.FJD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "FKP", source = "apiFetchCurrencyPriceData.FKP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "GBP", source = "apiFetchCurrencyPriceData.GBP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "GEL", source = "apiFetchCurrencyPriceData.GEL.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "GGP", source = "apiFetchCurrencyPriceData.GGP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "GHS", source = "apiFetchCurrencyPriceData.GHS.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "GIP", source = "apiFetchCurrencyPriceData.GIP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "GMD", source = "apiFetchCurrencyPriceData.GMD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "GNF", source = "apiFetchCurrencyPriceData.GNF.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "GTQ", source = "apiFetchCurrencyPriceData.GTQ.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "GYD", source = "apiFetchCurrencyPriceData.GYD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "HKD", source = "apiFetchCurrencyPriceData.HKD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "HNL", source = "apiFetchCurrencyPriceData.HNL.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "HRK", source = "apiFetchCurrencyPriceData.HRK.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "HTG", source = "apiFetchCurrencyPriceData.HTG.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "HUF", source = "apiFetchCurrencyPriceData.HUF.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "IDR", source = "apiFetchCurrencyPriceData.IDR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "ILS", source = "apiFetchCurrencyPriceData.ILS.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "IMP", source = "apiFetchCurrencyPriceData.IMP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "INR", source = "apiFetchCurrencyPriceData.INR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "IQD", source = "apiFetchCurrencyPriceData.IQD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "IRR", source = "apiFetchCurrencyPriceData.IRR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "ISK", source = "apiFetchCurrencyPriceData.ISK.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "JEP", source = "apiFetchCurrencyPriceData.JEP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "JMD", source = "apiFetchCurrencyPriceData.JMD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "JOD", source = "apiFetchCurrencyPriceData.JOD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "JPY", source = "apiFetchCurrencyPriceData.JPY.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "KES", source = "apiFetchCurrencyPriceData.KES.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "KGS", source = "apiFetchCurrencyPriceData.KGS.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "KHR", source = "apiFetchCurrencyPriceData.KHR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "KMF", source = "apiFetchCurrencyPriceData.KMF.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "KPW", source = "apiFetchCurrencyPriceData.KPW.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "KRW", source = "apiFetchCurrencyPriceData.KRW.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "KWD", source = "apiFetchCurrencyPriceData.KWD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "KYD", source = "apiFetchCurrencyPriceData.KYD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "KZT", source = "apiFetchCurrencyPriceData.KZT.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "LAK", source = "apiFetchCurrencyPriceData.LAK.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "LBP", source = "apiFetchCurrencyPriceData.LBP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "LKR", source = "apiFetchCurrencyPriceData.LKR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "LRD", source = "apiFetchCurrencyPriceData.LRD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "LSL", source = "apiFetchCurrencyPriceData.LSL.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "LTC", source = "apiFetchCurrencyPriceData.LTC.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "LTL", source = "apiFetchCurrencyPriceData.LTL.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "LVL", source = "apiFetchCurrencyPriceData.LVL.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "LYD", source = "apiFetchCurrencyPriceData.LYD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MAD", source = "apiFetchCurrencyPriceData.MAD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MATIC", source = "apiFetchCurrencyPriceData.MATIC.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MDL", source = "apiFetchCurrencyPriceData.MDL.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MGA", source = "apiFetchCurrencyPriceData.MGA.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MKD", source = "apiFetchCurrencyPriceData.MKD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MMK", source = "apiFetchCurrencyPriceData.MMK.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MNT", source = "apiFetchCurrencyPriceData.MNT.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MOP", source = "apiFetchCurrencyPriceData.MOP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MRO", source = "apiFetchCurrencyPriceData.MRO.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MRU", source = "apiFetchCurrencyPriceData.MRU.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MUR", source = "apiFetchCurrencyPriceData.MUR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MVR", source = "apiFetchCurrencyPriceData.MVR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MWK", source = "apiFetchCurrencyPriceData.MWK.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MXN", source = "apiFetchCurrencyPriceData.MXN.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MYR", source = "apiFetchCurrencyPriceData.MYR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "MZN", source = "apiFetchCurrencyPriceData.MZN.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "NAD", source = "apiFetchCurrencyPriceData.NAD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "NGN", source = "apiFetchCurrencyPriceData.NGN.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "NIO", source = "apiFetchCurrencyPriceData.NIO.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "NOK", source = "apiFetchCurrencyPriceData.NOK.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "NPR", source = "apiFetchCurrencyPriceData.NPR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "NZD", source = "apiFetchCurrencyPriceData.NZD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "OMR", source = "apiFetchCurrencyPriceData.OMR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "OP", source = "apiFetchCurrencyPriceData.OP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "PAB", source = "apiFetchCurrencyPriceData.PAB.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "PEN", source = "apiFetchCurrencyPriceData.PEN.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "PGK", source = "apiFetchCurrencyPriceData.PGK.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "PHP", source = "apiFetchCurrencyPriceData.PHP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "PKR", source = "apiFetchCurrencyPriceData.PKR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "PLN", source = "apiFetchCurrencyPriceData.PLN.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "PYG", source = "apiFetchCurrencyPriceData.PYG.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "QAR", source = "apiFetchCurrencyPriceData.QAR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "RON", source = "apiFetchCurrencyPriceData.RON.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "RSD", source = "apiFetchCurrencyPriceData.RSD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "RUB", source = "apiFetchCurrencyPriceData.RUB.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "RWF", source = "apiFetchCurrencyPriceData.RWF.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SAR", source = "apiFetchCurrencyPriceData.SAR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SBD", source = "apiFetchCurrencyPriceData.SBD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SCR", source = "apiFetchCurrencyPriceData.SCR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SDG", source = "apiFetchCurrencyPriceData.SDG.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SEK", source = "apiFetchCurrencyPriceData.SEK.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SGD", source = "apiFetchCurrencyPriceData.SGD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SHP", source = "apiFetchCurrencyPriceData.SHP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SLL", source = "apiFetchCurrencyPriceData.SLL.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SOL", source = "apiFetchCurrencyPriceData.SOL.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SOS", source = "apiFetchCurrencyPriceData.SOS.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SRD", source = "apiFetchCurrencyPriceData.SRD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "STD", source = "apiFetchCurrencyPriceData.STD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "STN", source = "apiFetchCurrencyPriceData.STN.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SVC", source = "apiFetchCurrencyPriceData.SVC.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SYP", source = "apiFetchCurrencyPriceData.SYP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "SZL", source = "apiFetchCurrencyPriceData.SZL.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "THB", source = "apiFetchCurrencyPriceData.THB.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "TJS", source = "apiFetchCurrencyPriceData.TJS.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "TMT", source = "apiFetchCurrencyPriceData.TMT.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "TND", source = "apiFetchCurrencyPriceData.TND.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "TOP", source = "apiFetchCurrencyPriceData.TOP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "TRY", source = "apiFetchCurrencyPriceData.TRY.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "TTD", source = "apiFetchCurrencyPriceData.TTD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "TWD", source = "apiFetchCurrencyPriceData.TWD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "TZS", source = "apiFetchCurrencyPriceData.TZS.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "UAH", source = "apiFetchCurrencyPriceData.UAH.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "UGX", source = "apiFetchCurrencyPriceData.UGX.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "USD", source = "apiFetchCurrencyPriceData.USD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "USDC", source = "apiFetchCurrencyPriceData.USDC.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "USDT", source = "apiFetchCurrencyPriceData.USDT.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "UYU", source = "apiFetchCurrencyPriceData.UYU.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "UZS", source = "apiFetchCurrencyPriceData.UZS.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "VEF", source = "apiFetchCurrencyPriceData.VEF.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "VES", source = "apiFetchCurrencyPriceData.VES.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "VND", source = "apiFetchCurrencyPriceData.VND.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "VUV", source = "apiFetchCurrencyPriceData.VUV.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "WST", source = "apiFetchCurrencyPriceData.WST.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "XAF", source = "apiFetchCurrencyPriceData.XAF.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "XAG", source = "apiFetchCurrencyPriceData.XAG.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "XAU", source = "apiFetchCurrencyPriceData.XAU.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "XCD", source = "apiFetchCurrencyPriceData.XCD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "XDR", source = "apiFetchCurrencyPriceData.XDR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "XOF", source = "apiFetchCurrencyPriceData.XOF.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "XPD", source = "apiFetchCurrencyPriceData.XPD.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "XPF", source = "apiFetchCurrencyPriceData.XPF.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "XPT", source = "apiFetchCurrencyPriceData.XPT.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "XRP", source = "apiFetchCurrencyPriceData.XRP.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "YER", source = "apiFetchCurrencyPriceData.YER.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "ZAR", source = "apiFetchCurrencyPriceData.ZAR.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "ZMK", source = "apiFetchCurrencyPriceData.ZMK.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "ZMW", source = "apiFetchCurrencyPriceData.ZMW.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "ZWL", source = "apiFetchCurrencyPriceData.ZWL.value", qualifiedByName = "parseStringToFloat")
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "baseCurrency", ignore = true)
+    @Mapping(target = "createdDate", ignore = true)
     CurrencyPrice currencyPriceFromApiResponse(
-            FetchCurrencyPriceResponse fetchCurrencyPriceResponse
+            ApiFetchCurrencyPriceResponse apiFetchCurrencyPriceResponse
     );
 
-    @Mapping(target = "data.ADA",
-            source = "ADA"
-    )
-    @Mapping(target = "data.AED",
-            source = "AED"
-    )
-    @Mapping(target = "data.AFN",
-            source = "AFN"
-    )
-    @Mapping(target = "data.ALL",
-            source = "ALL"
-    )
-    @Mapping(target = "data.AMD",
-            source = "AMD"
-    )
-    @Mapping(target = "data.ANG",
-            source = "ANG"
-    )
-    @Mapping(target = "data.AOA",
-            source = "AOA"
-    )
-    @Mapping(target = "data.ARB",
-            source = "ARB"
-    )
-    @Mapping(target = "data.ARS",
-            source = "ARS"
-    )
-    @Mapping(target = "data.AUD",
-            source = "AUD"
-    )
-    @Mapping(target = "data.AVAX",
-            source = "AVAX"
-    )
-    @Mapping(target = "data.AWG",
-            source = "AWG"
-    )
-    @Mapping(target = "data.AZN",
-            source = "AZN"
-    )
-    @Mapping(target = "data.BAM",
-            source = "BAM"
-    )
-    @Mapping(target = "data.BBD",
-            source = "BBD"
-    )
-    @Mapping(target = "data.BDT",
-            source = "BDT"
-    )
-    @Mapping(target = "data.BGN",
-            source = "BGN"
-    )
-    @Mapping(target = "data.BHD",
-            source = "BHD"
-    )
-    @Mapping(target = "data.BIF",
-            source = "BIF"
-    )
-    @Mapping(target = "data.BMD",
-            source = "BMD"
-    )
-    @Mapping(target = "data.BNB",
-            source = "BNB"
-    )
-    @Mapping(target = "data.BND",
-            source = "BND"
-    )
-    @Mapping(target = "data.BOB",
-            source = "BOB"
-    )
-    @Mapping(target = "data.BRL",
-            source = "BRL"
-    )
-    @Mapping(target = "data.BSD",
-            source = "BSD"
-    )
-    @Mapping(target = "data.BTC",
-            source = "BTC"
-    )
-    @Mapping(target = "data.BTN",
-            source = "BTN"
-    )
-    @Mapping(target = "data.BWP",
-            source = "BWP"
-    )
-    @Mapping(target = "data.BYN",
-            source = "BYN"
-    )
-    @Mapping(target = "data.BYR",
-            source = "BYR"
-    )
-    @Mapping(target = "data.BZD",
-            source = "BZD"
-    )
-    @Mapping(target = "data.CAD",
-            source = "CAD"
-    )
-    @Mapping(target = "data.CDF",
-            source = "CDF"
-    )
-    @Mapping(target = "data.CHF",
-            source = "CHF"
-    )
-    @Mapping(target = "data.CLF",
-            source = "CLF"
-    )
-    @Mapping(target = "data.CLP",
-            source = "CLP"
-    )
-    @Mapping(target = "data.CNY",
-            source = "CNY"
-    )
-    @Mapping(target = "data.COP",
-            source = "COP"
-    )
-    @Mapping(target = "data.CRC",
-            source = "CRC"
-    )
-    @Mapping(target = "data.CUC",
-            source = "CUC"
-    )
-    @Mapping(target = "data.CUP",
-            source = "CUP"
-    )
-    @Mapping(target = "data.CVE",
-            source = "CVE"
-    )
-    @Mapping(target = "data.CZK",
-            source = "CZK"
-    )
-    @Mapping(target = "data.DAI",
-            source = "DAI"
-    )
-    @Mapping(target = "data.DJF",
-            source = "DJF"
-    )
-    @Mapping(target = "data.DKK",
-            source = "DKK"
-    )
-    @Mapping(target = "data.DOP",
-            source = "DOP"
-    )
-    @Mapping(target = "data.DOT",
-            source = "DOT"
-    )
-    @Mapping(target = "data.DZD",
-            source = "DZD"
-    )
-    @Mapping(target = "data.EGP",
-            source = "EGP"
-    )
-    @Mapping(target = "data.ERN",
-            source = "ERN"
-    )
-    @Mapping(target = "data.ETB",
-            source = "ETB"
-    )
-    @Mapping(target = "data.ETH",
-            source = "ETH"
-    )
-    @Mapping(target = "data.EUR",
-            source = "EUR"
-    )
-    @Mapping(target = "data.FJD",
-            source = "FJD"
-    )
-    @Mapping(target = "data.FKP",
-            source = "FKP"
-    )
-    @Mapping(target = "data.GBP",
-            source = "GBP"
-    )
-    @Mapping(target = "data.GEL",
-            source = "GEL"
-    )
-    @Mapping(target = "data.GGP",
-            source = "GGP"
-    )
-    @Mapping(target = "data.GHS",
-            source = "GHS"
-    )
-    @Mapping(target = "data.GIP",
-            source = "GIP"
-    )
-    @Mapping(target = "data.GMD",
-            source = "GMD"
-    )
-    @Mapping(target = "data.GNF",
-            source = "GNF"
-    )
-    @Mapping(target = "data.GTQ",
-            source = "GTQ"
-    )
-    @Mapping(target = "data.GYD",
-            source = "GYD"
-    )
-    @Mapping(target = "data.HKD",
-            source = "HKD"
-    )
-    @Mapping(target = "data.HNL",
-            source = "HNL"
-    )
-    @Mapping(target = "data.HRK",
-            source = "HRK"
-    )
-    @Mapping(target = "data.HTG",
-            source = "HTG"
-    )
-    @Mapping(target = "data.HUF",
-            source = "HUF"
-    )
-    @Mapping(target = "data.IDR",
-            source = "IDR"
-    )
-    @Mapping(target = "data.ILS",
-            source = "ILS"
-    )
-    @Mapping(target = "data.IMP",
-            source = "IMP"
-    )
-    @Mapping(target = "data.INR",
-            source = "INR"
-    )
-    @Mapping(target = "data.IQD",
-            source = "IQD"
-    )
-    @Mapping(target = "data.IRR",
-            source = "IRR"
-    )
-    @Mapping(target = "data.ISK",
-            source = "ISK"
-    )
-    @Mapping(target = "data.JEP",
-            source = "JEP"
-    )
-    @Mapping(target = "data.JMD",
-            source = "JMD"
-    )
-    @Mapping(target = "data.JOD",
-            source = "JOD"
-    )
-    @Mapping(target = "data.JPY",
-            source = "JPY"
-    )
-    @Mapping(target = "data.KES",
-            source = "KES"
-    )
-    @Mapping(target = "data.KGS",
-            source = "KGS"
-    )
-    @Mapping(target = "data.KHR",
-            source = "KHR"
-    )
-    @Mapping(target = "data.KMF",
-            source = "KMF"
-    )
-    @Mapping(target = "data.KPW",
-            source = "KPW"
-    )
-    @Mapping(target = "data.KRW",
-            source = "KRW"
-    )
-    @Mapping(target = "data.KWD",
-            source = "KWD"
-    )
-    @Mapping(target = "data.KYD",
-            source = "KYD"
-    )
-    @Mapping(target = "data.KZT",
-            source = "KZT"
-    )
-    @Mapping(target = "data.LAK",
-            source = "LAK"
-    )
-    @Mapping(target = "data.LBP",
-            source = "LBP"
-    )
-    @Mapping(target = "data.LKR",
-            source = "LKR"
-    )
-    @Mapping(target = "data.LRD",
-            source = "LRD"
-    )
-    @Mapping(target = "data.LSL",
-            source = "LSL"
-    )
-    @Mapping(target = "data.LTC",
-            source = "LTC"
-    )
-    @Mapping(target = "data.LTL",
-            source = "LTL"
-    )
-    @Mapping(target = "data.LVL",
-            source = "LVL"
-    )
-    @Mapping(target = "data.LYD",
-            source = "LYD"
-    )
-    @Mapping(target = "data.MAD",
-            source = "MAD"
-    )
-    @Mapping(target = "data.MATIC",
-            source = "MATIC"
-    )
-    @Mapping(target = "data.MDL",
-            source = "MDL"
-    )
-    @Mapping(target = "data.MGA",
-            source = "MGA"
-    )
-    @Mapping(target = "data.MKD",
-            source = "MKD"
-    )
-    @Mapping(target = "data.MMK",
-            source = "MMK"
-    )
-    @Mapping(target = "data.MNT",
-            source = "MNT"
-    )
-    @Mapping(target = "data.MOP",
-            source = "MOP"
-    )
-    @Mapping(target = "data.MRO",
-            source = "MRO"
-    )
-    @Mapping(target = "data.MRU",
-            source = "MRU"
-    )
-    @Mapping(target = "data.MUR",
-            source = "MUR"
-    )
-    @Mapping(target = "data.MVR",
-            source = "MVR"
-    )
-    @Mapping(target = "data.MWK",
-            source = "MWK"
-    )
-    @Mapping(target = "data.MXN",
-            source = "MXN"
-    )
-    @Mapping(target = "data.MYR",
-            source = "MYR"
-    )
-    @Mapping(target = "data.MZN",
-            source = "MZN"
-    )
-    @Mapping(target = "data.NAD",
-            source = "NAD"
-    )
-    @Mapping(target = "data.NGN",
-            source = "NGN"
-    )
-    @Mapping(target = "data.NIO",
-            source = "NIO"
-    )
-    @Mapping(target = "data.NOK",
-            source = "NOK"
-    )
-    @Mapping(target = "data.NPR",
-            source = "NPR"
-    )
-    @Mapping(target = "data.NZD",
-            source = "NZD"
-    )
-    @Mapping(target = "data.OMR",
-            source = "OMR"
-    )
-    @Mapping(target = "data.OP",
-            source = "OP"
-    )
-    @Mapping(target = "data.PAB",
-            source = "PAB"
-    )
-    @Mapping(target = "data.PEN",
-            source = "PEN"
-    )
-    @Mapping(target = "data.PGK",
-            source = "PGK"
-    )
-    @Mapping(target = "data.PHP",
-            source = "PHP"
-    )
-    @Mapping(target = "data.PKR",
-            source = "PKR"
-    )
-    @Mapping(target = "data.PLN",
-            source = "PLN"
-    )
-    @Mapping(target = "data.PYG",
-            source = "PYG"
-    )
-    @Mapping(target = "data.QAR",
-            source = "QAR"
-    )
-    @Mapping(target = "data.RON",
-            source = "RON"
-    )
-    @Mapping(target = "data.RSD",
-            source = "RSD"
-    )
-    @Mapping(target = "data.RUB",
-            source = "RUB"
-    )
-    @Mapping(target = "data.RWF",
-            source = "RWF"
-    )
-    @Mapping(target = "data.SAR",
-            source = "SAR"
-    )
-    @Mapping(target = "data.SBD",
-            source = "SBD"
-    )
-    @Mapping(target = "data.SCR",
-            source = "SCR"
-    )
-    @Mapping(target = "data.SDG",
-            source = "SDG"
-    )
-    @Mapping(target = "data.SEK",
-            source = "SEK"
-    )
-    @Mapping(target = "data.SGD",
-            source = "SGD"
-    )
-    @Mapping(target = "data.SHP",
-            source = "SHP"
-    )
-    @Mapping(target = "data.SLL",
-            source = "SLL"
-    )
-    @Mapping(target = "data.SOL",
-            source = "SOL"
-    )
-    @Mapping(target = "data.SOS",
-            source = "SOS"
-    )
-    @Mapping(target = "data.SRD",
-            source = "SRD"
-    )
-    @Mapping(target = "data.STD",
-            source = "STD"
-    )
-    @Mapping(target = "data.STN",
-            source = "STN"
-    )
-    @Mapping(target = "data.SVC",
-            source = "SVC"
-    )
-    @Mapping(target = "data.SYP",
-            source = "SYP"
-    )
-    @Mapping(target = "data.SZL",
-            source = "SZL"
-    )
-    @Mapping(target = "data.THB",
-            source = "THB"
-    )
-    @Mapping(target = "data.TJS",
-            source = "TJS"
-    )
-    @Mapping(target = "data.TMT",
-            source = "TMT"
-    )
-    @Mapping(target = "data.TND",
-            source = "TND"
-    )
-    @Mapping(target = "data.TOP",
-            source = "TOP"
-    )
-    @Mapping(target = "data.TRY",
-            source = "TRY"
-    )
-    @Mapping(target = "data.TTD",
-            source = "TTD"
-    )
-    @Mapping(target = "data.TWD",
-            source = "TWD"
-    )
-    @Mapping(target = "data.TZS",
-            source = "TZS"
-    )
-    @Mapping(target = "data.UAH",
-            source = "UAH"
-    )
-    @Mapping(target = "data.UGX",
-            source = "UGX"
-    )
-    @Mapping(target = "data.USD",
-            source = "USD"
-    )
-    @Mapping(target = "data.USDC",
-            source = "USDC"
-    )
-    @Mapping(target = "data.USDT",
-            source = "USDT"
-    )
-    @Mapping(target = "data.UYU",
-            source = "UYU"
-    )
-    @Mapping(target = "data.UZS",
-            source = "UZS"
-    )
-    @Mapping(target = "data.VEF",
-            source = "VEF"
-    )
-    @Mapping(target = "data.VES",
-            source = "VES"
-    )
-    @Mapping(target = "data.VND",
-            source = "VND"
-    )
-    @Mapping(target = "data.VUV",
-            source = "VUV"
-    )
-    @Mapping(target = "data.WST",
-            source = "WST"
-    )
-    @Mapping(target = "data.XAF",
-            source = "XAF"
-    )
-    @Mapping(target = "data.XAG",
-            source = "XAG"
-    )
-    @Mapping(target = "data.XAU",
-            source = "XAU"
-    )
-    @Mapping(target = "data.XCD",
-            source = "XCD"
-    )
-    @Mapping(target = "data.XDR",
-            source = "XDR"
-    )
-    @Mapping(target = "data.XOF",
-            source = "XOF"
-    )
-    @Mapping(target = "data.XPD",
-            source = "XPD"
-    )
-    @Mapping(target = "data.XPF",
-            source = "XPF"
-    )
-    @Mapping(target = "data.XPT",
-            source = "XPT"
-    )
-    @Mapping(target = "data.XRP",
-            source = "XRP"
-    )
-    @Mapping(target = "data.YER",
-            source = "YER"
-    )
-    @Mapping(target = "data.ZAR",
-            source = "ZAR"
-    )
-    @Mapping(target = "data.ZMK",
-            source = "ZMK"
-    )
-    @Mapping(target = "data.ZMW",
-            source = "ZMW"
-    )
-    @Mapping(target = "data.ZWL",
-            source = "ZWL"
-    )
-    @Mapping(target = "meta.baseCurrency",
-            source = "baseCurrency"
-    )
-    @Mapping(target = "meta.createdDate",
-            source = "createdDate"
-    )
+    @Mapping(target = "findLatestData.ADA", source = "ADA")
+    @Mapping(target = "findLatestData.AED", source = "AED")
+    @Mapping(target = "findLatestData.AFN", source = "AFN")
+    @Mapping(target = "findLatestData.ALL", source = "ALL")
+    @Mapping(target = "findLatestData.AMD", source = "AMD")
+    @Mapping(target = "findLatestData.ANG", source = "ANG")
+    @Mapping(target = "findLatestData.AOA", source = "AOA")
+    @Mapping(target = "findLatestData.ARB", source = "ARB")
+    @Mapping(target = "findLatestData.ARS", source = "ARS")
+    @Mapping(target = "findLatestData.AUD", source = "AUD")
+    @Mapping(target = "findLatestData.AVAX", source = "AVAX")
+    @Mapping(target = "findLatestData.AWG", source = "AWG")
+    @Mapping(target = "findLatestData.AZN", source = "AZN")
+    @Mapping(target = "findLatestData.BAM", source = "BAM")
+    @Mapping(target = "findLatestData.BBD", source = "BBD")
+    @Mapping(target = "findLatestData.BDT", source = "BDT")
+    @Mapping(target = "findLatestData.BGN", source = "BGN")
+    @Mapping(target = "findLatestData.BHD", source = "BHD")
+    @Mapping(target = "findLatestData.BIF", source = "BIF")
+    @Mapping(target = "findLatestData.BMD", source = "BMD")
+    @Mapping(target = "findLatestData.BNB", source = "BNB")
+    @Mapping(target = "findLatestData.BND", source = "BND")
+    @Mapping(target = "findLatestData.BOB", source = "BOB")
+    @Mapping(target = "findLatestData.BRL", source = "BRL")
+    @Mapping(target = "findLatestData.BSD", source = "BSD")
+    @Mapping(target = "findLatestData.BTC", source = "BTC")
+    @Mapping(target = "findLatestData.BTN", source = "BTN")
+    @Mapping(target = "findLatestData.BWP", source = "BWP")
+    @Mapping(target = "findLatestData.BYN", source = "BYN")
+    @Mapping(target = "findLatestData.BYR", source = "BYR")
+    @Mapping(target = "findLatestData.BZD", source = "BZD")
+    @Mapping(target = "findLatestData.CAD", source = "CAD")
+    @Mapping(target = "findLatestData.CDF", source = "CDF")
+    @Mapping(target = "findLatestData.CHF", source = "CHF")
+    @Mapping(target = "findLatestData.CLP", source = "CLP")
+    @Mapping(target = "findLatestData.CNY", source = "CNY")
+    @Mapping(target = "findLatestData.COP", source = "COP")
+    @Mapping(target = "findLatestData.CRC", source = "CRC")
+    @Mapping(target = "findLatestData.CUC", source = "CUC")
+    @Mapping(target = "findLatestData.CUP", source = "CUP")
+    @Mapping(target = "findLatestData.CVE", source = "CVE")
+    @Mapping(target = "findLatestData.CZK", source = "CZK")
+    @Mapping(target = "findLatestData.DAI", source = "DAI")
+    @Mapping(target = "findLatestData.DJF", source = "DJF")
+    @Mapping(target = "findLatestData.DKK", source = "DKK")
+    @Mapping(target = "findLatestData.DOP", source = "DOP")
+    @Mapping(target = "findLatestData.DOT", source = "DOT")
+    @Mapping(target = "findLatestData.DZD", source = "DZD")
+    @Mapping(target = "findLatestData.EGP", source = "EGP")
+    @Mapping(target = "findLatestData.ERN", source = "ERN")
+    @Mapping(target = "findLatestData.ETB", source = "ETB")
+    @Mapping(target = "findLatestData.ETH", source = "ETH")
+    @Mapping(target = "findLatestData.EUR", source = "EUR")
+    @Mapping(target = "findLatestData.FJD", source = "FJD")
+    @Mapping(target = "findLatestData.FKP", source = "FKP")
+    @Mapping(target = "findLatestData.GBP", source = "GBP")
+    @Mapping(target = "findLatestData.GEL", source = "GEL")
+    @Mapping(target = "findLatestData.GGP", source = "GGP")
+    @Mapping(target = "findLatestData.GHS", source = "GHS")
+    @Mapping(target = "findLatestData.GIP", source = "GIP")
+    @Mapping(target = "findLatestData.GMD", source = "GMD")
+    @Mapping(target = "findLatestData.GNF", source = "GNF")
+    @Mapping(target = "findLatestData.GTQ", source = "GTQ")
+    @Mapping(target = "findLatestData.GYD", source = "GYD")
+    @Mapping(target = "findLatestData.HKD", source = "HKD")
+    @Mapping(target = "findLatestData.HNL", source = "HNL")
+    @Mapping(target = "findLatestData.HRK", source = "HRK")
+    @Mapping(target = "findLatestData.HTG", source = "HTG")
+    @Mapping(target = "findLatestData.HUF", source = "HUF")
+    @Mapping(target = "findLatestData.IDR", source = "IDR")
+    @Mapping(target = "findLatestData.ILS", source = "ILS")
+    @Mapping(target = "findLatestData.IMP", source = "IMP")
+    @Mapping(target = "findLatestData.INR", source = "INR")
+    @Mapping(target = "findLatestData.IQD", source = "IQD")
+    @Mapping(target = "findLatestData.IRR", source = "IRR")
+    @Mapping(target = "findLatestData.ISK", source = "ISK")
+    @Mapping(target = "findLatestData.JEP", source = "JEP")
+    @Mapping(target = "findLatestData.JMD", source = "JMD")
+    @Mapping(target = "findLatestData.JOD", source = "JOD")
+    @Mapping(target = "findLatestData.JPY", source = "JPY")
+    @Mapping(target = "findLatestData.KES", source = "KES")
+    @Mapping(target = "findLatestData.KGS", source = "KGS")
+    @Mapping(target = "findLatestData.KHR", source = "KHR")
+    @Mapping(target = "findLatestData.KMF", source = "KMF")
+    @Mapping(target = "findLatestData.KPW", source = "KPW")
+    @Mapping(target = "findLatestData.KRW", source = "KRW")
+    @Mapping(target = "findLatestData.KWD", source = "KWD")
+    @Mapping(target = "findLatestData.KYD", source = "KYD")
+    @Mapping(target = "findLatestData.KZT", source = "KZT")
+    @Mapping(target = "findLatestData.LAK", source = "LAK")
+    @Mapping(target = "findLatestData.LBP", source = "LBP")
+    @Mapping(target = "findLatestData.LKR", source = "LKR")
+    @Mapping(target = "findLatestData.LRD", source = "LRD")
+    @Mapping(target = "findLatestData.LSL", source = "LSL")
+    @Mapping(target = "findLatestData.LTC", source = "LTC")
+    @Mapping(target = "findLatestData.LTL", source = "LTL")
+    @Mapping(target = "findLatestData.LVL", source = "LVL")
+    @Mapping(target = "findLatestData.LYD", source = "LYD")
+    @Mapping(target = "findLatestData.MAD", source = "MAD")
+    @Mapping(target = "findLatestData.MATIC", source = "MATIC")
+    @Mapping(target = "findLatestData.MDL", source = "MDL")
+    @Mapping(target = "findLatestData.MGA", source = "MGA")
+    @Mapping(target = "findLatestData.MKD", source = "MKD")
+    @Mapping(target = "findLatestData.MMK", source = "MMK")
+    @Mapping(target = "findLatestData.MNT", source = "MNT")
+    @Mapping(target = "findLatestData.MOP", source = "MOP")
+    @Mapping(target = "findLatestData.MRO", source = "MRO")
+    @Mapping(target = "findLatestData.MRU", source = "MRU")
+    @Mapping(target = "findLatestData.MUR", source = "MUR")
+    @Mapping(target = "findLatestData.MVR", source = "MVR")
+    @Mapping(target = "findLatestData.MWK", source = "MWK")
+    @Mapping(target = "findLatestData.MXN", source = "MXN")
+    @Mapping(target = "findLatestData.MYR", source = "MYR")
+    @Mapping(target = "findLatestData.MZN", source = "MZN")
+    @Mapping(target = "findLatestData.NAD", source = "NAD")
+    @Mapping(target = "findLatestData.NGN", source = "NGN")
+    @Mapping(target = "findLatestData.NIO", source = "NIO")
+    @Mapping(target = "findLatestData.NOK", source = "NOK")
+    @Mapping(target = "findLatestData.NPR", source = "NPR")
+    @Mapping(target = "findLatestData.NZD", source = "NZD")
+    @Mapping(target = "findLatestData.OMR", source = "OMR")
+    @Mapping(target = "findLatestData.OP", source = "OP")
+    @Mapping(target = "findLatestData.PAB", source = "PAB")
+    @Mapping(target = "findLatestData.PEN", source = "PEN")
+    @Mapping(target = "findLatestData.PGK", source = "PGK")
+    @Mapping(target = "findLatestData.PHP", source = "PHP")
+    @Mapping(target = "findLatestData.PKR", source = "PKR")
+    @Mapping(target = "findLatestData.PLN", source = "PLN")
+    @Mapping(target = "findLatestData.PYG", source = "PYG")
+    @Mapping(target = "findLatestData.QAR", source = "QAR")
+    @Mapping(target = "findLatestData.RON", source = "RON")
+    @Mapping(target = "findLatestData.RSD", source = "RSD")
+    @Mapping(target = "findLatestData.RUB", source = "RUB")
+    @Mapping(target = "findLatestData.RWF", source = "RWF")
+    @Mapping(target = "findLatestData.SAR", source = "SAR")
+    @Mapping(target = "findLatestData.SBD", source = "SBD")
+    @Mapping(target = "findLatestData.SCR", source = "SCR")
+    @Mapping(target = "findLatestData.SDG", source = "SDG")
+    @Mapping(target = "findLatestData.SEK", source = "SEK")
+    @Mapping(target = "findLatestData.SGD", source = "SGD")
+    @Mapping(target = "findLatestData.SHP", source = "SHP")
+    @Mapping(target = "findLatestData.SLL", source = "SLL")
+    @Mapping(target = "findLatestData.SOL", source = "SOL")
+    @Mapping(target = "findLatestData.SOS", source = "SOS")
+    @Mapping(target = "findLatestData.SRD", source = "SRD")
+    @Mapping(target = "findLatestData.STD", source = "STD")
+    @Mapping(target = "findLatestData.STN", source = "STN")
+    @Mapping(target = "findLatestData.SVC", source = "SVC")
+    @Mapping(target = "findLatestData.SYP", source = "SYP")
+    @Mapping(target = "findLatestData.SZL", source = "SZL")
+    @Mapping(target = "findLatestData.THB", source = "THB")
+    @Mapping(target = "findLatestData.TJS", source = "TJS")
+    @Mapping(target = "findLatestData.TMT", source = "TMT")
+    @Mapping(target = "findLatestData.TND", source = "TND")
+    @Mapping(target = "findLatestData.TOP", source = "TOP")
+    @Mapping(target = "findLatestData.TRY", source = "TRY")
+    @Mapping(target = "findLatestData.TTD", source = "TTD")
+    @Mapping(target = "findLatestData.TWD", source = "TWD")
+    @Mapping(target = "findLatestData.TZS", source = "TZS")
+    @Mapping(target = "findLatestData.UAH", source = "UAH")
+    @Mapping(target = "findLatestData.UGX", source = "UGX")
+    @Mapping(target = "findLatestData.USD", source = "USD")
+    @Mapping(target = "findLatestData.USDC", source = "USDC")
+    @Mapping(target = "findLatestData.USDT", source = "USDT")
+    @Mapping(target = "findLatestData.UYU", source = "UYU")
+    @Mapping(target = "findLatestData.UZS", source = "UZS")
+    @Mapping(target = "findLatestData.VEF", source = "VEF")
+    @Mapping(target = "findLatestData.VES", source = "VES")
+    @Mapping(target = "findLatestData.VND", source = "VND")
+    @Mapping(target = "findLatestData.VUV", source = "VUV")
+    @Mapping(target = "findLatestData.WST", source = "WST")
+    @Mapping(target = "findLatestData.XAF", source = "XAF")
+    @Mapping(target = "findLatestData.XAG", source = "XAG")
+    @Mapping(target = "findLatestData.XAU", source = "XAU")
+    @Mapping(target = "findLatestData.XCD", source = "XCD")
+    @Mapping(target = "findLatestData.XDR", source = "XDR")
+    @Mapping(target = "findLatestData.XOF", source = "XOF")
+    @Mapping(target = "findLatestData.XPD", source = "XPD")
+    @Mapping(target = "findLatestData.XPF", source = "XPF")
+    @Mapping(target = "findLatestData.XPT", source = "XPT")
+    @Mapping(target = "findLatestData.XRP", source = "XRP")
+    @Mapping(target = "findLatestData.YER", source = "YER")
+    @Mapping(target = "findLatestData.ZAR", source = "ZAR")
+    @Mapping(target = "findLatestData.ZMK", source = "ZMK")
+    @Mapping(target = "findLatestData.ZMW", source = "ZMW")
+    @Mapping(target = "findLatestData.ZWL", source = "ZWL")
+    @Mapping(target = "findLatestMeta.baseCurrency", source = "baseCurrency")
+    @Mapping(target = "findLatestMeta.createdDate", source = "createdDate")
     FindLatestResponse findLatestResponseFromCurrencyPrice(CurrencyPrice currencyPrice);
 
 }

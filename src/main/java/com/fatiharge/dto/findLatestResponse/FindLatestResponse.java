@@ -1,7 +1,11 @@
 package com.fatiharge.dto.findLatestResponse;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class FindLatestResponse {
-    public Meta meta;
-    public Data data;
+    @JsonProperty("meta")
+    public FindLatestMeta findLatestMeta;
+    @JsonProperty("data")
+    public FindLatestData findLatestData;
 }
