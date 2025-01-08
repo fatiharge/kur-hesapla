@@ -19,8 +19,10 @@ import jakarta.transaction.Transactional;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -57,16 +59,40 @@ public class HistoricalCurrencyPriceService {
 
         Set<LocalDate> dbDates = historicalCurrencyPriceList.stream().map(hcp -> hcp.date).collect(Collectors.toSet());
 
-
         List<LocalDate> missingDates = allDates.stream().filter(date -> !dbDates.contains(date)).toList();
 
-        for (LocalDate date : missingDates) {
-            HistoricalCurrencyPrice historicalCurrencyPrice = historicalCurrencyMapper.historicalCurrencyPriceFromApiResponse(
-                    openCurrencyApiClient.currencies(String.valueOf(date), baseCurrency));
-            historicalCurrencyMapper.setBaseCurrency(historicalCurrencyPrice, baseCurrency);
-            historicalCurrencyPrice.persist();
-            historicalCurrencyPriceList.add(historicalCurrencyPrice);
-        }
+        ExecutorService executor = Executors.newFixedThreadPool(16);
+        Map<LocalDate, String> errorMap = new HashMap<>();
+        List<CompletableFuture<HistoricalCurrencyPrice>> futures = missingDates.stream()
+                .map(date -> CompletableFuture.supplyAsync(() -> {
+
+                    HistoricalCurrencyPrice historicalCurrencyPrice = historicalCurrencyMapper.historicalCurrencyPriceFromApiResponse(
+                            openCurrencyApiClient.currencies(String.valueOf(date), baseCurrency));
+                    historicalCurrencyMapper.setBaseCurrency(historicalCurrencyPrice, baseCurrency);
+
+                    persistHistoricalCurrencyPrice(historicalCurrencyPrice);
+
+                    return historicalCurrencyPrice;
+                }, executor).exceptionally(ex -> {
+
+                    Throwable cause = ex.getCause();
+                    while (cause != null) {
+                        errorMap.put(date, cause.getClass().getSimpleName() + " : " + cause.getMessage());
+                        cause = cause.getCause();
+                    }
+                    return null;
+                }))
+                .toList();
+
+
+        List<HistoricalCurrencyPrice> results = futures.stream()
+                .map(CompletableFuture::join)
+                .filter(Objects::nonNull)
+                .toList();
+
+        executor.shutdown();
+
+        historicalCurrencyPriceList.addAll(results);
 
 
         List<HistoricalPricesData> historicalPricesDataList = historicalCurrencyPriceList.stream()
@@ -75,9 +101,17 @@ public class HistoricalCurrencyPriceService {
 
         HistoricalPricesResponse currenciesResponse = new HistoricalPricesResponse();
         currenciesResponse.historicalPricesDataList = historicalPricesDataList;
+        currenciesResponse.errorDates = errorMap;
 
 
         currenciesResponse.historicalPricesMeta = new HistoricalPricesMeta(startDate, endDate, baseCurrency);
         return currenciesResponse;
+
+
+    }
+
+    @Transactional
+    public void persistHistoricalCurrencyPrice(HistoricalCurrencyPrice historicalCurrencyPrice) {
+        historicalCurrencyPrice.persist();
     }
 }
