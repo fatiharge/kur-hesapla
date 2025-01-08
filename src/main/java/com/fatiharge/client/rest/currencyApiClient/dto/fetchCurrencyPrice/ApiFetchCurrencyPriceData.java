@@ -2,381 +2,380 @@ package com.fatiharge.client.rest.currencyApiClient.dto.fetchCurrencyPrice;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import com.fatiharge.client.rest.currencyApiClient.dto.fetchCurrencyPrice.models.*;
 
 public class ApiFetchCurrencyPriceData {
     @JsonProperty("ADA")
-    public ADA ADA;
+    public CurrencyModel ADA;
     @JsonProperty("AED")
-    public AED AED;
+    public CurrencyModel AED;
     @JsonProperty("AFN")
-    public AFN AFN;
+    public CurrencyModel AFN;
     @JsonProperty("ALL")
-    public ALL ALL;
+    public CurrencyModel ALL;
     @JsonProperty("AMD")
-    public AMD AMD;
+    public CurrencyModel AMD;
     @JsonProperty("ANG")
-    public ANG ANG;
+    public CurrencyModel ANG;
     @JsonProperty("AOA")
-    public AOA AOA;
+    public CurrencyModel AOA;
     @JsonProperty("ARB")
-    public ARB ARB;
+    public CurrencyModel ARB;
     @JsonProperty("ARS")
-    public ARS ARS;
+    public CurrencyModel ARS;
     @JsonProperty("AUD")
-    public AUD AUD;
+    public CurrencyModel AUD;
     @JsonProperty("AVAX")
-    public AVAX AVAX;
+    public CurrencyModel AVAX;
     @JsonProperty("AWG")
-    public AWG AWG;
+    public CurrencyModel AWG;
     @JsonProperty("AZN")
-    public AZN AZN;
+    public CurrencyModel AZN;
     @JsonProperty("BAM")
-    public BAM BAM;
+    public CurrencyModel BAM;
     @JsonProperty("BBD")
-    public BBD BBD;
+    public CurrencyModel BBD;
     @JsonProperty("BDT")
-    public BDT BDT;
+    public CurrencyModel BDT;
     @JsonProperty("BGN")
-    public BGN BGN;
+    public CurrencyModel BGN;
     @JsonProperty("BHD")
-    public BHD BHD;
+    public CurrencyModel BHD;
     @JsonProperty("BIF")
-    public BIF BIF;
+    public CurrencyModel BIF;
     @JsonProperty("BMD")
-    public BMD BMD;
+    public CurrencyModel BMD;
     @JsonProperty("BNB")
-    public BNB BNB;
+    public CurrencyModel BNB;
     @JsonProperty("BND")
-    public BND BND;
+    public CurrencyModel BND;
     @JsonProperty("BOB")
-    public BOB BOB;
+    public CurrencyModel BOB;
     @JsonProperty("BRL")
-    public BRL BRL;
+    public CurrencyModel BRL;
     @JsonProperty("BSD")
-    public BSD BSD;
+    public CurrencyModel BSD;
     @JsonProperty("BTC")
-    public BTC BTC;
+    public CurrencyModel BTC;
     @JsonProperty("BTN")
-    public BTN BTN;
+    public CurrencyModel BTN;
     @JsonProperty("BWP")
-    public BWP BWP;
+    public CurrencyModel BWP;
     @JsonProperty("BYN")
-    public BYN BYN;
+    public CurrencyModel BYN;
     @JsonProperty("BYR")
-    public BYR BYR;
+    public CurrencyModel BYR;
     @JsonProperty("BZD")
-    public BZD BZD;
+    public CurrencyModel BZD;
     @JsonProperty("CAD")
-    public CAD CAD;
+    public CurrencyModel CAD;
     @JsonProperty("CDF")
-    public CDF CDF;
+    public CurrencyModel CDF;
     @JsonProperty("CHF")
-    public CHF CHF;
+    public CurrencyModel CHF;
     @JsonProperty("CLP")
-    public CLP CLP;
+    public CurrencyModel CLP;
     @JsonProperty("CNY")
-    public CNY CNY;
+    public CurrencyModel CNY;
     @JsonProperty("COP")
-    public COP COP;
+    public CurrencyModel COP;
     @JsonProperty("CRC")
-    public CRC CRC;
+    public CurrencyModel CRC;
     @JsonProperty("CUC")
-    public CUC CUC;
+    public CurrencyModel CUC;
     @JsonProperty("CUP")
-    public CUP CUP;
+    public CurrencyModel CUP;
     @JsonProperty("CVE")
-    public CVE CVE;
+    public CurrencyModel CVE;
     @JsonProperty("CZK")
-    public CZK CZK;
+    public CurrencyModel CZK;
     @JsonProperty("DAI")
-    public DAI DAI;
+    public CurrencyModel DAI;
     @JsonProperty("DJF")
-    public DJF DJF;
+    public CurrencyModel DJF;
     @JsonProperty("DKK")
-    public DKK DKK;
+    public CurrencyModel DKK;
     @JsonProperty("DOP")
-    public DOP DOP;
+    public CurrencyModel DOP;
     @JsonProperty("DOT")
-    public DOT DOT;
+    public CurrencyModel DOT;
     @JsonProperty("DZD")
-    public DZD DZD;
+    public CurrencyModel DZD;
     @JsonProperty("EGP")
-    public EGP EGP;
+    public CurrencyModel EGP;
     @JsonProperty("ERN")
-    public ERN ERN;
+    public CurrencyModel ERN;
     @JsonProperty("ETB")
-    public ETB ETB;
+    public CurrencyModel ETB;
     @JsonProperty("ETH")
-    public ETH ETH;
+    public CurrencyModel ETH;
     @JsonProperty("EUR")
-    public EUR EUR;
+    public CurrencyModel EUR;
     @JsonProperty("FJD")
-    public FJD FJD;
+    public CurrencyModel FJD;
     @JsonProperty("FKP")
-    public FKP FKP;
+    public CurrencyModel FKP;
     @JsonProperty("GBP")
-    public GBP GBP;
+    public CurrencyModel GBP;
     @JsonProperty("GEL")
-    public GEL GEL;
+    public CurrencyModel GEL;
     @JsonProperty("GGP")
-    public GGP GGP;
+    public CurrencyModel GGP;
     @JsonProperty("GHS")
-    public GHS GHS;
+    public CurrencyModel GHS;
     @JsonProperty("GIP")
-    public GIP GIP;
+    public CurrencyModel GIP;
     @JsonProperty("GMD")
-    public GMD GMD;
+    public CurrencyModel GMD;
     @JsonProperty("GNF")
-    public GNF GNF;
+    public CurrencyModel GNF;
     @JsonProperty("GTQ")
-    public GTQ GTQ;
+    public CurrencyModel GTQ;
     @JsonProperty("GYD")
-    public GYD GYD;
+    public CurrencyModel GYD;
     @JsonProperty("HKD")
-    public HKD HKD;
+    public CurrencyModel HKD;
     @JsonProperty("HNL")
-    public HNL HNL;
+    public CurrencyModel HNL;
     @JsonProperty("HRK")
-    public HRK HRK;
+    public CurrencyModel HRK;
     @JsonProperty("HTG")
-    public HTG HTG;
+    public CurrencyModel HTG;
     @JsonProperty("HUF")
-    public HUF HUF;
+    public CurrencyModel HUF;
     @JsonProperty("IDR")
-    public IDR IDR;
+    public CurrencyModel IDR;
     @JsonProperty("ILS")
-    public ILS ILS;
+    public CurrencyModel ILS;
     @JsonProperty("IMP")
-    public IMP IMP;
+    public CurrencyModel IMP;
     @JsonProperty("INR")
-    public INR INR;
+    public CurrencyModel INR;
     @JsonProperty("IQD")
-    public IQD IQD;
+    public CurrencyModel IQD;
     @JsonProperty("IRR")
-    public IRR IRR;
+    public CurrencyModel IRR;
     @JsonProperty("ISK")
-    public ISK ISK;
+    public CurrencyModel ISK;
     @JsonProperty("JEP")
-    public JEP JEP;
+    public CurrencyModel JEP;
     @JsonProperty("JMD")
-    public JMD JMD;
+    public CurrencyModel JMD;
     @JsonProperty("JOD")
-    public JOD JOD;
+    public CurrencyModel JOD;
     @JsonProperty("JPY")
-    public JPY JPY;
+    public CurrencyModel JPY;
     @JsonProperty("KES")
-    public KES KES;
+    public CurrencyModel KES;
     @JsonProperty("KGS")
-    public KGS KGS;
+    public CurrencyModel KGS;
     @JsonProperty("KHR")
-    public KHR KHR;
+    public CurrencyModel KHR;
     @JsonProperty("KMF")
-    public KMF KMF;
+    public CurrencyModel KMF;
     @JsonProperty("KPW")
-    public KPW KPW;
+    public CurrencyModel KPW;
     @JsonProperty("KRW")
-    public KRW KRW;
+    public CurrencyModel KRW;
     @JsonProperty("KWD")
-    public KWD KWD;
+    public CurrencyModel KWD;
     @JsonProperty("KYD")
-    public KYD KYD;
+    public CurrencyModel KYD;
     @JsonProperty("KZT")
-    public KZT KZT;
+    public CurrencyModel KZT;
     @JsonProperty("LAK")
-    public LAK LAK;
+    public CurrencyModel LAK;
     @JsonProperty("LBP")
-    public LBP LBP;
+    public CurrencyModel LBP;
     @JsonProperty("LKR")
-    public LKR LKR;
+    public CurrencyModel LKR;
     @JsonProperty("LRD")
-    public LRD LRD;
+    public CurrencyModel LRD;
     @JsonProperty("LSL")
-    public LSL LSL;
+    public CurrencyModel LSL;
     @JsonProperty("LTC")
-    public LTC LTC;
+    public CurrencyModel LTC;
     @JsonProperty("LTL")
-    public LTL LTL;
+    public CurrencyModel LTL;
     @JsonProperty("LVL")
-    public LVL LVL;
+    public CurrencyModel LVL;
     @JsonProperty("LYD")
-    public LYD LYD;
+    public CurrencyModel LYD;
     @JsonProperty("MAD")
-    public MAD MAD;
+    public CurrencyModel MAD;
     @JsonProperty("MATIC")
-    public MATIC MATIC;
+    public CurrencyModel MATIC;
     @JsonProperty("MDL")
-    public MDL MDL;
+    public CurrencyModel MDL;
     @JsonProperty("MGA")
-    public MGA MGA;
+    public CurrencyModel MGA;
     @JsonProperty("MKD")
-    public MKD MKD;
+    public CurrencyModel MKD;
     @JsonProperty("MMK")
-    public MMK MMK;
+    public CurrencyModel MMK;
     @JsonProperty("MNT")
-    public MNT MNT;
+    public CurrencyModel MNT;
     @JsonProperty("MOP")
-    public MOP MOP;
+    public CurrencyModel MOP;
     @JsonProperty("MRO")
-    public MRO MRO;
+    public CurrencyModel MRO;
     @JsonProperty("MRU")
-    public MRU MRU;
+    public CurrencyModel MRU;
     @JsonProperty("MUR")
-    public MUR MUR;
+    public CurrencyModel MUR;
     @JsonProperty("MVR")
-    public MVR MVR;
+    public CurrencyModel MVR;
     @JsonProperty("MWK")
-    public MWK MWK;
+    public CurrencyModel MWK;
     @JsonProperty("MXN")
-    public MXN MXN;
+    public CurrencyModel MXN;
     @JsonProperty("MYR")
-    public MYR MYR;
+    public CurrencyModel MYR;
     @JsonProperty("MZN")
-    public MZN MZN;
+    public CurrencyModel MZN;
     @JsonProperty("NAD")
-    public NAD NAD;
+    public CurrencyModel NAD;
     @JsonProperty("NGN")
-    public NGN NGN;
+    public CurrencyModel NGN;
     @JsonProperty("NIO")
-    public NIO NIO;
+    public CurrencyModel NIO;
     @JsonProperty("NOK")
-    public NOK NOK;
+    public CurrencyModel NOK;
     @JsonProperty("NPR")
-    public NPR NPR;
+    public CurrencyModel NPR;
     @JsonProperty("NZD")
-    public NZD NZD;
+    public CurrencyModel NZD;
     @JsonProperty("OMR")
-    public OMR OMR;
+    public CurrencyModel OMR;
     @JsonProperty("OP")
-    public OP OP;
+    public CurrencyModel OP;
     @JsonProperty("PAB")
-    public PAB PAB;
+    public CurrencyModel PAB;
     @JsonProperty("PEN")
-    public PEN PEN;
+    public CurrencyModel PEN;
     @JsonProperty("PGK")
-    public PGK PGK;
+    public CurrencyModel PGK;
     @JsonProperty("PHP")
-    public PHP PHP;
+    public CurrencyModel PHP;
     @JsonProperty("PKR")
-    public PKR PKR;
+    public CurrencyModel PKR;
     @JsonProperty("PLN")
-    public PLN PLN;
+    public CurrencyModel PLN;
     @JsonProperty("PYG")
-    public PYG PYG;
+    public CurrencyModel PYG;
     @JsonProperty("QAR")
-    public QAR QAR;
+    public CurrencyModel QAR;
     @JsonProperty("RON")
-    public RON RON;
+    public CurrencyModel RON;
     @JsonProperty("RSD")
-    public RSD RSD;
+    public CurrencyModel RSD;
     @JsonProperty("RUB")
-    public RUB RUB;
+    public CurrencyModel RUB;
     @JsonProperty("RWF")
-    public RWF RWF;
+    public CurrencyModel RWF;
     @JsonProperty("SAR")
-    public SAR SAR;
+    public CurrencyModel SAR;
     @JsonProperty("SBD")
-    public SBD SBD;
+    public CurrencyModel SBD;
     @JsonProperty("SCR")
-    public SCR SCR;
+    public CurrencyModel SCR;
     @JsonProperty("SDG")
-    public SDG SDG;
+    public CurrencyModel SDG;
     @JsonProperty("SEK")
-    public SEK SEK;
+    public CurrencyModel SEK;
     @JsonProperty("SGD")
-    public SGD SGD;
+    public CurrencyModel SGD;
     @JsonProperty("SHP")
-    public SHP SHP;
+    public CurrencyModel SHP;
     @JsonProperty("SLL")
-    public SLL SLL;
+    public CurrencyModel SLL;
     @JsonProperty("SOL")
-    public SOL SOL;
+    public CurrencyModel SOL;
     @JsonProperty("SOS")
-    public SOS SOS;
+    public CurrencyModel SOS;
     @JsonProperty("SRD")
-    public SRD SRD;
+    public CurrencyModel SRD;
     @JsonProperty("STD")
-    public STD STD;
+    public CurrencyModel STD;
     @JsonProperty("STN")
-    public STN STN;
+    public CurrencyModel STN;
     @JsonProperty("SVC")
-    public SVC SVC;
+    public CurrencyModel SVC;
     @JsonProperty("SYP")
-    public SYP SYP;
+    public CurrencyModel SYP;
     @JsonProperty("SZL")
-    public SZL SZL;
+    public CurrencyModel SZL;
     @JsonProperty("THB")
-    public THB THB;
+    public CurrencyModel THB;
     @JsonProperty("TJS")
-    public TJS TJS;
+    public CurrencyModel TJS;
     @JsonProperty("TMT")
-    public TMT TMT;
+    public CurrencyModel TMT;
     @JsonProperty("TND")
-    public TND TND;
+    public CurrencyModel TND;
     @JsonProperty("TOP")
-    public TOP TOP;
+    public CurrencyModel TOP;
     @JsonProperty("TRY")
-    public TRY TRY;
+    public CurrencyModel TRY;
     @JsonProperty("TTD")
-    public TTD TTD;
+    public CurrencyModel TTD;
     @JsonProperty("TWD")
-    public TWD TWD;
+    public CurrencyModel TWD;
     @JsonProperty("TZS")
-    public TZS TZS;
+    public CurrencyModel TZS;
     @JsonProperty("UAH")
-    public UAH UAH;
+    public CurrencyModel UAH;
     @JsonProperty("UGX")
-    public UGX UGX;
+    public CurrencyModel UGX;
     @JsonProperty("USD")
-    public USD USD;
+    public CurrencyModel USD;
     @JsonProperty("USDC")
-    public USDC USDC;
+    public CurrencyModel USDC;
     @JsonProperty("USDT")
-    public USDT USDT;
+    public CurrencyModel USDT;
     @JsonProperty("UYU")
-    public UYU UYU;
+    public CurrencyModel UYU;
     @JsonProperty("UZS")
-    public UZS UZS;
+    public CurrencyModel UZS;
     @JsonProperty("VEF")
-    public VEF VEF;
+    public CurrencyModel VEF;
     @JsonProperty("VES")
-    public VES VES;
+    public CurrencyModel VES;
     @JsonProperty("VND")
-    public VND VND;
+    public CurrencyModel VND;
     @JsonProperty("VUV")
-    public VUV VUV;
+    public CurrencyModel VUV;
     @JsonProperty("WST")
-    public WST WST;
+    public CurrencyModel WST;
     @JsonProperty("XAF")
-    public XAF XAF;
+    public CurrencyModel XAF;
     @JsonProperty("XAG")
-    public XAG XAG;
+    public CurrencyModel XAG;
     @JsonProperty("XAU")
-    public XAU XAU;
+    public CurrencyModel XAU;
     @JsonProperty("XCD")
-    public XCD XCD;
+    public CurrencyModel XCD;
     @JsonProperty("XDR")
-    public XDR XDR;
+    public CurrencyModel XDR;
     @JsonProperty("XOF")
-    public XOF XOF;
+    public CurrencyModel XOF;
     @JsonProperty("XPD")
-    public XPD XPD;
+    public CurrencyModel XPD;
     @JsonProperty("XPF")
-    public XPF XPF;
+    public CurrencyModel XPF;
     @JsonProperty("XPT")
-    public XPT XPT;
+    public CurrencyModel XPT;
     @JsonProperty("XRP")
-    public XRP XRP;
+    public CurrencyModel XRP;
     @JsonProperty("YER")
-    public YER YER;
+    public CurrencyModel YER;
     @JsonProperty("ZAR")
-    public ZAR ZAR;
+    public CurrencyModel ZAR;
     @JsonProperty("ZMK")
-    public ZMK ZMK;
+    public CurrencyModel ZMK;
     @JsonProperty("ZMW")
-    public ZMW ZMW;
+    public CurrencyModel ZMW;
     @JsonProperty("ZWL")
-    public ZWL ZWL;
+    public CurrencyModel ZWL;
 }
 
 
